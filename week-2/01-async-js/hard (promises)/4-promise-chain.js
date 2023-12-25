@@ -7,18 +7,40 @@
 
 function wait1(t) {
 
+    return new Promise(function(resolve){
+        setTimeout(() => {resolve()} , t * 1000)
+    });
 }
 
 function wait2(t) {
-
+    return new Promise(function(resolve){
+        setTimeout(() => {resolve()} , t * 1000)
+    });
 }
 
 function wait3(t) {
-
+    return new Promise(function(resolve){
+        setTimeout(() => {resolve()} , t * 1000)
+    });
 }
 
 function calculateTime(t1, t2, t3) {
 
+    let startTime = Date.now();
+    let endTime ;
+    let timeTaken;
+
+    return wait1(t1).then(()=> {
+        return wait2(t2).then(() => {
+            return wait3(t3).then(() => {
+                endTime = Date.now();
+                // console.log(endTime - startTime);
+                return(endTime - startTime);
+            })
+        })
+    })
+
 }
 
+calculateTime( 1  , 2 , 3).then((value) => {console.log(value)});
 module.exports = calculateTime;

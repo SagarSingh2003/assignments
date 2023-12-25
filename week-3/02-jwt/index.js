@@ -1,6 +1,10 @@
 const jwt = require('jsonwebtoken');
+const zod = require('zod');
+const {jwtDecode} = require('jwt-decode');
 const jwtPassword = 'secret';
 
+const userValidate = zod.string().email();
+const passValidate = zod.string().length(6);
 
 /**
  * Generates a JWT for a given username and password.
@@ -15,7 +19,21 @@ const jwtPassword = 'secret';
  */
 function signJwt(username, password) {
     // Your code here
+    const userResult = userValidate.safeParse(username);
+    const passResult = passValidate.safeParse(password);
+
+
+    if (!userResult.success || !passResult.success){
+        // console.log(userResult.error);
+        // console.log(passResult.error);
+        return null ;
+    }
+
+    const token = jwt.sign({"username" : username , "password" : password} , jwtPassword);
+    return token;
 }
+
+
 
 /**
  * Verifies a JWT using a secret key.
@@ -27,6 +45,17 @@ function signJwt(username, password) {
  */
 function verifyJwt(token) {
     // Your code here
+
+     return jwt.verify(token , jwtPassword, function(err ,decoded){
+        if(decoded){
+            console.log('reaches here ************************')
+            return true;
+        }
+        console.log('reaches here too **************')
+        return false;
+     });
+    
+    
 }
 
 /**
@@ -38,7 +67,37 @@ function verifyJwt(token) {
  */
 function decodeJwt(token) {
     // Your code here
+
+    // return jwtDecode(token , (err , decoded) =>{
+    //     if(err){
+    //         console.log(err);
+    //         return false;
+    //     }else{
+    //         console.log(decoded);
+    //         return true;
+    //     }
+    // })
+
+    
+    try{
+        const decode = jwtDecode(token , (err , decoded) => {
+            console.log('here*******************' , decode);
+            console.log('here er*******************' , err);
+        });
+
+        if(decode){
+            return true;
+        }
+        console.log('decodeeeeeeeeeeeeee' ,decode);
+    }catch(err){
+        return false;
+    }
+    
+    
 }
+
+
+
 
 
 module.exports = {

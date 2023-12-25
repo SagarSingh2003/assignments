@@ -12,16 +12,39 @@ const app = express();
 // clears every one second
 
 let numberOfRequestsForUser = {};
+let requestCount = 0;
+
 setInterval(() => {
     numberOfRequestsForUser = {};
+    requestCount = 0;
+    // console.log(numberOfRequestsForUser);
+    // console.log('cleared');
 }, 1000)
 
-app.get('/user', function(req, res) {
-  res.status(200).json({ name: 'john' });
+app.get('/user', function(req, res , next) {
+
+  checkForRequests(req ,res , next);
+
 });
 
 app.post('/user', function(req, res) {
+  checkForRequests();
   res.status(200).json({ msg: 'created dummy user' });
 });
+
+
+function checkForRequests(req , res , next){
+  const user = req.headers.userid;
+  requestCount = requestCount + 1;
+  numberOfRequestsForUser[user] = requestCount;
+  // console.log(numberOfRequestsForUser);
+  if(numberOfRequestsForUser[user] > 5){
+    res.status(404);
+    res.json({"msg" : "you have exceeded the rate limit"});
+  }else{
+    res.status(200).json({ name: 'john' });
+  }
+}
+
 
 module.exports = app;
