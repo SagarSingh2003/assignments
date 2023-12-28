@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoApp</title>
+  </head>
+  <body>
+
+    <form>
+      <input type="text" placeholder="Enter todo Title" id="todoTitle">
+      <input type="text" placeholder="Enter todo Description" id="todoDesc">
+
+    </form>
+
+    <button type="button"  id="AddTodoButton">Add Todo</button>
+
+    <div id="root"></div>
+
+    <script src="script.js" type="module"></script> 
+    <script>
+      document.getElementById("AddTodoButton").addEventListener("click" , create);
+    </script>
+  </body>
+</html>

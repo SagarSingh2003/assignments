@@ -1,0 +1,15 @@
+form{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+}
+
+input, #sumResult{
+    width: 10%;
+}
+
+#sumResult{
+    font-weight: bold;
+    color: red;
+}

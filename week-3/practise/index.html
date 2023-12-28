@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content='width=device-width , initial-scale=1'>
+        <title>fetch you</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <button onclick="getAnimalData()">get Animal Data</button>
+        <div id="animal"></div>
+        <script>
+            
+            async function getAnimalData(){
+
+            // fetch('https://randomuser.me/api/') 
+            //   .then(function(response){
+            //        response.json().then(function(data){
+            //            resPonse = (data.results[0].name.first);
+            //        });
+            //    })
+
+                let response = await fetch('https://randomuser.me/api/');
+                console.log(response);
+                let response2 = await response.json();
+                let resPonse = response2.results[0].name.first;
+                        
+                
+                document.getElementById('animal').innerText = resPonse;
+
+            }
+        </script>
+    </body>
+</html>

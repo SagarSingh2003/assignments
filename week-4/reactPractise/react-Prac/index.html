@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>console.log('hello')</script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+    <script type="module">
+      import {RenderCreatedElements} from  './script.js';
+      console.log("getting here first");
+
+      window.RenderCreatedElements = RenderCreatedElements;
+      
+    </script>
+  </head>
+  <body>
+    <button  onclick="RenderCreatedElements()">button</button>
+    <div id="root"></div>
+
+    <!-- <script type="module" src="/src/App.jsx"></script> -->
+  </body>
+</html>

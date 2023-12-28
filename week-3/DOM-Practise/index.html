@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>DOM PRACTISE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <form onsubmit="SumItUp(event)">
+    <input type="text" placeholder="enter number 1 here" name="num1">
+    <input type = "text" placeholder="enter number 2 here" name="num2">
+    <input type="submit" text="submit" id="sumButton">
+    <div id="sumResult"></div>
+    </form>
+    
+    <script type="text/javascript">
+        function SumItUp(event){
+            document.getElementById('sumResult').innerHTML = "";
+            event.preventDefault();
+
+            const param1 = event.target['num1'].value;
+            const param2 = event.target['num2'].value;
+            
+            document.getElementById('sumResult').innerHTML += (Number(param1) + Number(param2));
+        
+        }
+    </script>
+</body>
+</html>

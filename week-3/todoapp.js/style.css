@@ -1,0 +1,44 @@
+body{
+    width: 100%;
+}
+
+form{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-left: 40%; 
+    width: 20%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+form input{
+    height: 30px;
+}
+
+section#showTodos{    
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    justify-content: space-around;
+    align-items: center;
+
+    padding-left: 45%;
+}
+
+#showTodos p{
+    
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#showTodos p[class="todoDesc"]{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+#showTodos button{
+    margin-bottom: 50px;
+}
