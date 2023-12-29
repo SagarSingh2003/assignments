@@ -27,10 +27,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required : true
     },
-    purchasedCourses : {
-        type : [mongoose.Schema.Types.ObjectId],
+    purchasedCourses : [{
+        type : mongoose.Schema.Types.ObjectId,
         ref : 'Course'
-    }
+    }]
 })
 
 const adminSchema = new mongoose.Schema({
@@ -42,10 +42,10 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    coursesCreated : {
-        type:[mongoose.Schema.Types.ObjectId],
+    coursesCreated : [{
+        type:mongoose.Schema.Types.ObjectId,
         ref: 'Course'
-    }
+    }]
 })
 
 const courseSchema = new mongoose.Schema({
