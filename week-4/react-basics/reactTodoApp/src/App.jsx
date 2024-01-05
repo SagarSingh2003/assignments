@@ -1,36 +1,35 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import {renderElementsOnDom} from './main.jsx'
 import './App.css'
 
-let counter = 1;
-const TodoTitle = document.getElementById("todoTitle").value;
-const TodoDesc = document.getElementById("todoDesc").value;
+function App() {
+  const [count, setCount] = useState(0)
 
-function markAsDone(){
-  document.getElementById("counter").innerHTML = "DONE !";
-  counter += 1;
+  return (
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export class App {
-    constructor(todoDesc , todoTitle){
-      this.todoTitle = todoTitle;
-      this.todoDesc = todoDesc;
-      this.render = () => {
-        renderElementsOnDom(
-          <div>
-            <span>Todo Title : {TodoTitle}</span>
-            <span>Todo Title : {TodoDesc}</span>
-            <button onClick={() => {markAsDone()}} id='counter'>Mark As DONE!</button>
-          </div>
-        )
-      }
-    }
-
-}
-
-
-
-
-
+export default App
